@@ -1,0 +1,6 @@
+{
+  "/api/books/route": "app/api/books/route.js",
+  "/api/borrow/route": "app/api/borrow/route.js",
+  "/api/user/login/route": "app/api/user/login/route.js",
+  "/page": "app/page.js"
+}
