@@ -95,6 +95,20 @@ export default function Home() {
     if (user) loadBooks();
   }, [search]);
 
+  // Restore the login session from the token cookie on page load / refresh
+  useEffect(() => {
+    const restoreSession = async () => {
+      const res = await fetch('/api/user/me');
+      if (res.ok) {
+        const data = await res.json();
+        setUser(data.user);
+        loadBooks();
+        loadBorrows();
+      }
+    };
+    restoreSession();
+  }, []);
+
   if (!user) {
     return (
       <div style={{ maxWidth: '400px', margin: '60px auto', padding: '24px', border: '1px solid #ccc', borderRadius: '8px' }}>
